@@ -100,15 +100,15 @@ public class Pantalla {
 	}
 
 //Final del jugador
-	public void mostrarNpc(int compensacionX, int compensacionY, NPC enemigo) {
+	public void mostrarNpc(int compensacionX, int compensacionY, NPC npc) {
 		compensacionX -= diferenciaX;
 		compensacionY -= diferenciaY;
 
-		for (int y = 0; y < enemigo.obtenSprite().obtenLado(); y++) {
+		for (int y = 0; y < npc.obtenSprite().obtenLado(); y++) {
 			int posicionY = y + compensacionY;
-			for (int x = 0; x < enemigo.obtenSprite().obtenLado(); x++) {
+			for (int x = 0; x < npc.obtenSprite().obtenLado(); x++) {
 				int posicionX = x + compensacionX;
-				if (posicionX < -enemigo.obtenSprite().obtenLado() || posicionX >= ancho || posicionY < 0
+				if (posicionX < -npc.obtenSprite().obtenLado() || posicionX >= ancho || posicionY < 0
 						|| posicionY >= alto) {
 					break;
 
@@ -117,7 +117,7 @@ public class Pantalla {
 					posicionX = 0;
 				}
 
-				int colorPixelJugador = enemigo.obtenSprite().pixeles[x + y * enemigo.obtenSprite().obtenLado()];
+				int colorPixelJugador = npc.obtenSprite().pixeles[x + y * npc.obtenSprite().obtenLado()];
 				if (colorPixelJugador != 0xffffffff) {
 					pixeles[posicionX + posicionY * ancho] = colorPixelJugador;
 				}

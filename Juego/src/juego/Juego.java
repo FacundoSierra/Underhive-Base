@@ -4,21 +4,21 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
-import GUI.Escena_principal;
 import control.Teclado;
 import entes.Spam;
 import entes.criatura.Jugador;
 import entes.criatura.NPC;
 import graficos.Pantalla;
 import graficos.Sprite;
+import gui.Scene1;
 import mapa.Mapa;
 import mapa.MapaCargado;
 
@@ -54,7 +54,6 @@ public class Juego extends Canvas implements Runnable {
 	private static Thread thread;
 	private static Teclado teclado;
 	private static Pantalla pantalla;
-	private static Escena_principal escenaprincipal;
 	private static Mapa mapa;
 	private static Jugador jugador;
 	private static NPC enemigo;
@@ -109,8 +108,18 @@ public class Juego extends Canvas implements Runnable {
 //-----------------Main----------------------------------------
 
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
-			new Escena_principal();
+//		SwingUtilities.invokeLater(() -> {
+//			new Escena_principal();
+//		});
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Scene1 frame = new Scene1();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		});
 
 	}// final del main
@@ -241,5 +250,9 @@ public class Juego extends Canvas implements Runnable {
 	public long getTiempo() {
 		return tiempo;
 
+	}
+
+	public static Mapa obtenrMapa() {
+		return mapa;
 	}
 }// final del Canvas

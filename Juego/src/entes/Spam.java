@@ -3,6 +3,7 @@ package entes;
 import entes.criatura.Jugador;
 import entes.criatura.NPC;
 import graficos.Pantalla;
+import graficos.Sprite;
 import juego.Juego;
 
 public class Spam {
@@ -96,7 +97,7 @@ public class Spam {
 			if (npcs[z][0] != 256) {
 				int x = npcs[z][2];
 				int y = npcs[z][3];
-				NPC enemigo = new NPC(x, y);
+				NPC enemigo = new NPC(Juego.obtenrMapa(), Sprite.KINROJOARRIBA0, jugador, 14250, 14250);
 				pantalla.mostrarNpc(x, y, this);
 			}
 		}
